@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
+import android.media.ImageReader;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;

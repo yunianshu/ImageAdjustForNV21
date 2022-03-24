@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GPUApplication">
         <activity
-            android:name="com.filter.lq.imagefilter.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

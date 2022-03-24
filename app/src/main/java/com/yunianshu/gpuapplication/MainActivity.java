@@ -14,6 +14,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
@@ -166,7 +167,7 @@ public class MainActivity extends Activity {
 
     private void load() {
         try {
-            InputStream is = getApplicationContext().getAssets().open("test.jpg");
+            InputStream is = getApplicationContext().getAssets().open("test1.jpg");
             BitmapFactory.Options op = new BitmapFactory.Options();
             op.inPreferredConfig = Bitmap.Config.ARGB_8888;
             mSrcBitmap = BitmapFactory.decodeStream(is, null, op);
@@ -175,13 +176,13 @@ public class MainActivity extends Activity {
             Log.i("test", " load() image size:" + mBmpW + "x" + mBmpH);
 
             int nv21Len = mBmpW * mBmpH * 3 >> 1;
-            mNV21Buf = new byte[nv21Len];
-            InputStream nvIs = getApplicationContext().getAssets().open("testNV21.nv21");
-            int nvLen = nvIs.available();
-            Log.i("test", " load() nv21Len:" + nv21Len + " nvLen:" + nvLen);
-            int read = nvIs.read(mNV21Buf);
-            nvIs.close();
-            Log.i("test", " load() nv21 read byte:" + read);
+            mNV21Buf = ImageUtils.bitmapToNv21(mSrcBitmap,mBmpW,mBmpH);
+//            InputStream nvIs = getApplicationContext().getAssets().open("testNV21.nv21");
+//            int nvLen = nvIs.available();
+//            Log.i("test", " load() nv21Len:" + nv21Len + " nvLen:" + nvLen);
+//            int read = nvIs.read(mNV21Buf);
+//            nvIs.close();
+//            Log.i("test", " load() nv21 read byte:" + read);
             mPreviewNV21Buf = new byte[nv21Len];
         } catch (Exception e) {
             e.printStackTrace();
